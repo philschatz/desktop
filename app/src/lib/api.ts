@@ -8,7 +8,7 @@ import { HTTPMethod, request, deserialize, getUserAgent } from './http'
 import { AuthenticationMode } from './2fa'
 import { uuid } from './uuid'
 
-const Octokat = require('octokat')
+import Octokat from 'octokat'
 const username: () => Promise<string> = require('username')
 
 const ClientID = process.env.TEST_ENV ? '' : __OAUTH_CLIENT_ID__
@@ -228,7 +228,7 @@ function toGitHubIsoDateString(date: Date) {
  * An object for making authenticated requests to the GitHub API
  */
 export class API {
-  private client: any
+  private client: Octokat
   private account: Account
 
   public constructor(account: Account) {
